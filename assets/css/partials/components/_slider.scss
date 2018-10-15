@@ -1,0 +1,145 @@
+.slider {
+	
+	&__container {
+		
+		display: grid;
+		grid-template-columns: 
+			[start-page prev-start] 1fr
+			[prev-end] minmax(75vw, 2fr)
+			[next-start] 1fr [next-end end-page]
+		;
+		grid-template-rows:
+			[slider-start] 20vh
+			[controls-start] minmax(5rem, 1fr)
+			[controls-end] minmax(4rem, 1fr)
+			20vh [slider-end]
+		;
+		margin: 0; 
+		padding: 0;
+		position: relative;
+		height: 100%;
+	}
+
+	&__article {
+		grid-row: slider-start / slider-end;
+		grid-column: start-page / end-page;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		overflow: hidden;
+
+		& > a {
+			grid-row: 1 / -1;
+			grid-column: 1/ -1;
+		}
+
+		
+		@include respond(phone) {
+            grid-template-rows: 1fr max-content;
+        }
+		
+	}
+
+	// &__article:hover &__image {
+	// 	transform: scale(1.1);
+	// }
+
+	&__image {
+		position: relative;
+	z-index: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: all .4s ease-in-out;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+
+	&__caption {
+		color: $color-white;
+		grid-row: 2 / -1;
+		grid-column: 1 / -1;
+		background-image: $black-bg;
+		clip-path: polygon(0 65%, 100% 0, 100% 100%, 0% 100%);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-end;
+		padding-bottom: 5rem;
+		padding-right: 5rem;
+		padding-left: 50rem;
+
+		@include respond(tab-port) {
+			clip-path: polygon(0 35%, 100% 0, 100% 100%, 0% 100%);
+			padding: 5rem;
+			justify-content: center;
+		}
+
+		@include respond(phone) {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			padding: 2rem 1.5rem 6rem 1rem;
+		}
+	}
+
+	&__info {
+		font-weight: 300;
+		display: flex;
+		justify-items: center;
+	}
+
+	&__title {
+		text-align: right;
+		margin-bottom: 2rem;
+	}
+
+	&__category {
+		color: $color-black;
+		display: inline-block;
+		padding: 0 1rem;
+		background-color: $color-white;
+		font-weight: 400;
+		font-size: 1.3rem;
+		margin-right: .8rem;
+	}
+
+	&__prev,
+	&__next {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__prev {
+		grid-row: controls-start / controls-end;
+		grid-column: prev-start / prev-end;
+	}
+
+	&__next {
+		grid-row: controls-start / controls-end;
+		grid-column: next-start / next-end;
+	}
+
+	&__prev:hover,
+	&__next:hover {
+		cursor: pointer;
+	}
+
+	&__arrow {
+
+		border: solid $primary-color;
+    	border-width: 0 2rem 2rem 0;
+		display: inline-block;
+		padding: 1rem;
+	}
+
+	&__arrow--left {
+		transform: rotate(135deg);
+	}
+
+	&__arrow--right {
+		transform: rotate(-45deg);
+	}
+
+}

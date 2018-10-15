@@ -1,0 +1,85 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    //This define the rem size
+    font-size: 62.5%;
+   
+    @include respond(tab-land) {
+        font-size: 56.25%;
+    }
+    @include respond(tab-port) {
+        font-size: 50%;
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%;
+    }
+}
+
+body {
+    background-color: lighten($secondary-color, 10%);
+    box-sizing: border-box;
+    @include respond(tab-port) {
+        padding: 0;
+    }
+    
+}
+
+.main-container {
+    display: grid;
+    grid-template-rows: 
+        [header-start] 5.5rem 
+        [header-end content-start] max-content 
+        [content-end footer-start] max-content [footer-end]
+    ;
+}
+
+.content-container {
+    display: grid;
+    grid-template-rows: 
+        [title-start] repeat(3,[row-start] calc((100vh - 5.5rem) / 3) [row-end])
+        [title-end content-start] min-content
+        [content-end meta-start] min-content
+        [meta-end comments-start] min-content [comments-end]
+    ;
+    grid-template-columns: 
+        [page-start blank-start] repeat(2, [col-start] 1fr [col-end])
+        [blank-end text-start] 60vw
+        [text-end sidebar-start] repeat(5, [col-start] 1fr [col-end]) [sidebar-end page-end]
+    ;
+    @include respond(small-desktop) {
+        grid-template-columns:
+            [page-start blank-start] 5rem  
+            [blank-end text-start] 75vw
+            [text-end sidebar-start] 1fr [sidebar-end page-end]
+        ;
+    }
+    @include respond(tab-land) {
+        grid-template-columns: 
+            [page-start blank-start] 1fr
+            [blank-end text-start] 85vw
+            [text-end blank-start-2] 1fr [blank-end-2 page-end] 
+        ;
+        grid-template-rows: 
+            [title-start] repeat(3,[row-start] calc((100vh - 5.5rem) / 3) [row-end])
+            [title-end content-start] min-content
+            [content-end meta-start] min-content
+            [meta-end comments-start] min-content 
+            [comments-end sidebar-start] min-content [sidebar-end]
+        ;
+    }
+    @include respond(phone) {
+        grid-template-columns: 
+            [page-start] 1fr [text-start] 94vw [text-end] 1fr [page-end] 
+        ;
+    }
+}
+
+::selection {
+}

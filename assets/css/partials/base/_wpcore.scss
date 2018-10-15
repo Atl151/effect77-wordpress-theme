@@ -1,0 +1,85 @@
+.size-full {
+    width: 100%;
+    height: auto;
+}
+
+.wp-block-image {
+    width: 100%;
+    height: auto;
+    margin: 1.5rem 0 1.5rem 0;
+    @include respond(tab-port) {
+        img {
+            width: 100%;
+        }
+    }
+
+}
+
+.wp-block-gallery {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.wp-caption {
+    @include respond(tab-port) {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.alignwide {
+    position: relative;
+    width: 55vw;
+    left: -9rem;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    iframe {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    @include respond(tab-port) {
+        width: 100%;
+        left: 0;
+    }
+}
+
+.alignfull {
+    position: relative;
+    width: 99.3vw;
+    left: calc((((45vw / 5) * 2) + 9rem) * (-1));
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    iframe {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    @include respond(phone) {
+        width: 100%;
+        left: 0;
+    }
+}
+
+iframe {
+    @include respond(phone) {
+        width: 100%;
+        height: auto;
+    }
+}

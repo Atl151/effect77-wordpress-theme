@@ -1,0 +1,71 @@
+.author-main {
+    &__heading {
+        grid-row: title-start / row-end 2;
+        grid-column: page-start / page-end;
+        background-image: $primary-bg;
+        display: grid;
+        grid-template-columns: repeat(8, [col-start] 1fr [col-end]);
+        grid-template-rows: repeat(3, [row-start] 1fr [row-end]);
+    }
+
+    &__title {
+        grid-column: col-start 2 / col-end 6;
+        grid-row: row-start 1 / row-end 2;
+        align-self: center;
+    }
+
+    &__content {
+        grid-row: row-start 2 / comments-end;
+        grid-column: text-start / text-end;
+        background-color: lighten($secondary-color, 8%);
+        margin-top: 5rem;
+        padding: 5rem 6rem;
+        border-radius: 1px;
+
+    }
+
+    &__profile {
+        margin-bottom: 3rem;
+        min-height: 15rem;
+        padding: 0;
+    }
+
+    &__avatar {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        margin-right: 2rem;
+        margin-bottom: .5rem;
+        clip-path: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        border-radius: none;
+
+        img {
+            height: 100%;
+            width: auto;
+        }
+
+        @include respond(phone) {
+            float: none;
+            margin: 0 auto;
+            
+        }
+        
+    }
+
+    &__articles {
+        display: grid;
+        grid-auto-rows: min-content;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        grid-row-gap: 3.5rem;
+        grid-column-gap: 4rem;
+
+        @include respond(phone) {
+            grid-row-gap: 3rem;
+            grid-column-gap: 0;
+            
+        }
+    }
+}

@@ -1,0 +1,90 @@
+.gridpost {
+    box-shadow: 1px 1px 2px gray;
+    display: grid;
+    grid-template-columns: [item-start] repeat(4, [col-start] 1fr [col-end]) [item-end];
+    grid-template-rows: 
+        [title-start] minmax(min-content, 5rem)
+        [title-end img-start] repeat(4, [row-start] 1fr [row-end])
+        [img-end info-start] minmax(min-content, 2rem)
+        [info-end content-start] repeat(3, [row-start] min-content [row-end])
+    ;
+    overflow: hidden;
+
+    @include respond(phone) {
+        box-shadow: none;
+    }
+
+    &__title {
+        grid-row: title-start / title-end;
+        grid-column: item-start / item-end;
+        color: $color-white;
+        padding: 1rem;
+        line-height: 2.8rem;
+        background-image: $black-bg-2;
+
+    }
+
+    &__link {
+        transition: all .2s;
+        display: inline-block;
+    }
+
+    &__title:hover &__link {
+        transform: translateY(-3px) scale(1.01);
+    }
+
+    &__img-box {
+        grid-row: img-start / img-end;
+        grid-column: item-start / item-end;
+        overflow: hidden;
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: all .2s;
+        position: relative;
+        z-index: 10;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+    }
+
+    &__category {
+        grid-row: row-start 3 / row-end 3;
+        grid-column: col-start 3 / item-end;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: $color-white;
+        background-image: $secondary-bg-transparent;
+        border-radius: 3px 0 0 3px;
+        padding-right: 1rem;
+        position: relative;
+        z-index: 20;
+        transition: all .2s;
+        
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    &__info {
+        grid-row: info-start / info-end;
+        grid-column: item-start / item-end;
+        color: $color-white;
+        background-image: $black-bg-2;
+        padding: .5rem 1rem;
+    }
+
+    &__content {
+        grid-row: content-start / content-end;
+        grid-column: item-start / item-end;
+    }
+
+
+}

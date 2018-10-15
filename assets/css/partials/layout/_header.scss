@@ -1,0 +1,73 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    background-color: lighten($secondary-color, 8%);
+    grid-row: header-start / header-end;
+    box-shadow: $shadow-dark;
+    overflow: visible;
+    position: relative;
+    z-index: 100;
+
+    @include respond(tab-port) {
+        justify-content: space-between;
+    }
+
+    &__logo-box {
+        height: 80%;
+        width: 12rem;
+        margin-left: 5rem;
+        align-self: center;
+
+        img {
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+        }
+
+        @include respond(phone) {
+            margin-left: 1.5rem;
+        }
+    }
+
+    &__navbar {
+        display: flex;
+        align-items: center;
+        
+        @include respond(tab-port) {
+            display: none;
+        }
+        
+    }
+
+    &__navbar2 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: auto;
+
+        @include respond(tab-port) {
+            display: none;
+        }
+    }
+
+    &__mobile {
+        height: 5.5rem;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+
+        @include respond(tab-port) {
+            display: flex;
+        }
+
+        &:active,
+        &:focus {
+            outline: none;
+            transform: translateY(-1px);
+            box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        }
+    }
+}
+

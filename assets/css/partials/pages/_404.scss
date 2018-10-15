@@ -1,0 +1,43 @@
+.main-404 {
+    &__heading {
+        grid-row: title-start / row-end 2;
+        grid-column: page-start / page-end;
+        background-image: $primary-bg;
+        display: grid;
+        grid-template-columns: repeat(8, [col-start] 1fr [col-end]);
+        grid-template-rows: repeat(3, [row-start] 1fr [row-end]);
+    }
+    
+    &__title {
+        grid-column: col-start 2 / col-end 6;
+        grid-row: row-start 1 / row-end 2;
+        align-self: center;
+    }
+
+    &__content {
+        grid-row: row-start 2 / comments-end;
+        grid-column: text-start / text-end;
+        background-color: lighten($secondary-color, 8%);
+        margin-top: 5rem;
+
+        .searchform {
+            margin-left: 9rem;
+    
+            &__input {
+                width: 70%;
+            }
+    
+            &__submit {
+                width: 18%;
+            }
+        }
+    }
+
+    .main-sidebar {
+        grid-row: row-start 3 / comments-end;
+    }
+
+    
+
+}
+

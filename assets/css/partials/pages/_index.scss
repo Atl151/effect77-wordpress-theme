@@ -1,0 +1,49 @@
+.index-main {
+    
+    &__grid {
+        background-color: lighten($secondary-color, 8%);
+        grid-row: content-start / comments-end;
+        grid-column: text-start / text-end;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+        grid-auto-rows: min-content;
+        grid-row-gap: 5rem;
+        grid-column-gap: 5rem;
+        align-content: space-around;
+        padding: 6rem 5rem;
+
+        @include respond(tab-land) {
+            padding: 3rem .5rem;
+            grid-row-gap: 3rem;
+            grid-column: text-start / text-end;
+        }
+
+        @include respond(phone) {
+            margin-top: 4rem;
+            grid-row: content-start / comments-end;
+            grid-column: page-start / page-end;
+            padding: 2rem 0;
+            grid-row-gap: 3rem;
+        }
+    }
+
+    .slider {
+        grid-row: title-start / title-end;
+        grid-column: page-start / page-end;
+
+        // @include respond(phone) {
+        //     grid-row: title-start / row-end 2;
+        // }
+        
+    }
+
+    .main-sidebar {
+        grid-row: content-start / comments-end;
+ 
+        @include respond(tab-land) {
+            grid-column: page-start / page-end;
+            grid-row: sidebar-start / sidebar-end;
+        }
+    }
+
+}

@@ -1,0 +1,122 @@
+.post-main {
+
+    &__image-box {
+        grid-column: page-start / -1;
+        grid-row: title-start / title-end;
+        z-index: -1;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &__heading {
+        grid-column: page-start / page-end;
+        grid-row: row-start 2 / row-end 2;
+        display: grid;
+        grid-template-columns: [start-page] repeat(12, [col-start] 1fr [col-end]) [end-page];
+        grid-template-rows: 2fr 1fr;
+        background-image: $black-bg;
+        z-index: 10;
+    }
+
+    &__content {
+        grid-column: text-start / text-end;
+        grid-row: row-start 3 / content-end;
+        background-color: lighten($secondary-color, 8%);
+        margin-top: 10rem;
+        position: relative;
+        
+
+        & > p:first-child::first-letter{
+            float: left;
+            margin-top: -1.5rem;
+            line-height: 7.5rem;
+            padding-right: .7rem;
+            font-size: 9rem;
+            font-weight: 700;
+            color: darken($tertiary-color, 10%);
+        }
+        
+        @include mozilla-first-letter;
+
+    }
+
+    &__meta {
+        grid-column: text-start / text-end;
+        grid-row: meta-start / meta-end;
+        background-color: lighten($secondary-color, 8%);
+        padding: 2rem 5rem;
+        margin-top: .5rem;
+
+        
+        & > ul {
+            list-style: none;
+            display: flex;
+            margin-top: 1rem;
+            margin-left: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        li {
+            background-color: $primary-color;
+            padding: 0 1rem;
+            border-radius: 2px;
+            transform: skew(15deg);
+            white-space: nowrap;
+            margin-top: 1rem;
+
+            a {
+                display: inline-block;
+                transform: skew(-15deg);
+            }
+        }
+
+        li:not(:last-child){
+            margin-right: 1rem;
+        }
+
+    }
+
+    &__comments {
+        grid-column: text-start / text-end;
+        grid-row: comments-start / comments-end;
+        background-color: lighten($secondary-color, 8%);
+        padding: 2rem 5rem;
+        margin-top: .5rem;
+    }
+
+    &__title {
+        grid-column: col-start 2 / col-end 10;
+        grid-row: 1;
+        align-self: end;
+
+        @include respond(tab-land) {   
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__info {
+        grid-column: col-start 2 / col-end 5;
+        grid-row: 2;
+        padding-left: 5rem;
+        @include respond(tab-land) {   
+            grid-column: col-start 2 / col-end 12;
+        }
+        @include respond(phone) {   
+            grid-column: col-start 1 / col-end 12;
+        }
+        
+    }
+
+    .main-sidebar {
+        grid-row: content-start / comments-end;
+        
+        @include respond(tab-land) {   
+            grid-row: sidebar-start / sidebar-end;
+        }
+    }
+}
