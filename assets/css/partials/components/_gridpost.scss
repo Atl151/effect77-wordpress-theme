@@ -4,7 +4,7 @@
     grid-template-columns: [item-start] repeat(4, [col-start] 1fr [col-end]) [item-end];
     grid-template-rows: 
         [title-start] minmax(min-content, 5rem)
-        [title-end img-start] repeat(4, [row-start] 1fr [row-end])
+        [title-end img-start] repeat(4, [row-start] 5.5rem [row-end])
         [img-end info-start] minmax(min-content, 2rem)
         [info-end content-start] repeat(3, [row-start] min-content [row-end])
     ;
