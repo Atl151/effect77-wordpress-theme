@@ -4,8 +4,8 @@
  *
  * Entire theme's function definitions.
  *
- * @since   1.0.0
- * @package WP
+ * @since   0.1.0
+ * @package effect77
  */
 
 // Exit if accessed directly.
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Frontend with no conditions, Add Custom styles to wp_head.
  *
- * @since  1.0.0
+ * @since  0.1.0
  */
 
 if ( ! function_exists( 'e77_setup' ) ) :
@@ -117,15 +117,16 @@ function e77_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'e77_excerpt_more' );
 
-// add_filter('script_loader_src', 'agnostic_script_loader_src', 20,2);
-// function agnostic_script_loader_src($src, $handle) {
-//     return preg_replace('/^(http|https):/', '', $src);
-// }
+//Fix https requests
+function e77_agnostic_script_loader_src($src, $handle) {
+    return preg_replace('/^(http|https):/', '', $src);
+}
+add_filter('script_loader_src', 'e77_agnostic_script_loader_src', 20,2);
 
-// add_filter('style_loader_src', 'agnostic_style_loader_src', 20,2);
-// function agnostic_style_loader_src($src, $handle) {
-//     return preg_replace('/^(http|https):/', '', $src);
-// }
+function e77_agnostic_style_loader_src($src, $handle) {
+    return preg_replace('/^(http|https):/', '', $src);
+}
+add_filter('style_loader_src', 'e77_agnostic_style_loader_src', 20,2);
 
 // if ( defined( 'JETPACK__VERSION' ) ) {
 // 	require get_template_directory() . '/inc/jetpack.php';
@@ -165,6 +166,7 @@ function e77_save_slider_meta( $post_id, $post ) {
 	elseif ( ’ == $new_meta_value && $meta_value )
 	  delete_post_meta( $post_id, $meta_key, $meta_value );
   }
+
 function e77_slider_metabox($post) { 
 	wp_nonce_field( basename( __FILE__ ), 'e77_slider_nonce');
 	?>
@@ -173,13 +175,6 @@ function e77_slider_metabox($post) {
 			<?php _e("Add the post to the slider", "e77") ?>
 		</label>
 		<br />
-		<!-- <select 
-			type="text" 
-			class="metabox__input"
-		>
-			<?php $mb_value =  get_post_meta( $post->ID, 'e77_slider_meta', true ) ?>
-			<option value=""></option>
-		</select> -->
 		<input 
 			type="checkbox" 
 			class="metabox__input" 
