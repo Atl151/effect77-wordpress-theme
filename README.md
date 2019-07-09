@@ -1,3 +1,3 @@
-# effect77
+# Effect77 
 
 Wordpress Theme for Effect77.com
