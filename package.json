@@ -1,11 +1,10 @@
 {
-  "name": "your-project",
+  "name": "effect77-wordpress-plugin",
   "description": "A WPGulp based project.",
   "version": "1.0.0",
-  "author": "Author Name (https://twitter.com/MrAhmadAwais/)",
+  "author": "Daniel garcia",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/ahmadawais/WPGulp"
+    "type": "git"
   },
   "license": "MIT",
   "devDependencies": {
